@@ -3,60 +3,44 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>절대강자 분할환전 - 전체 사용방법</title>
+    <title>절대강자 분할환전 - 이용방법</title>
     <style>
-        /* ===== Reset & Base ===== */
         * { margin: 0; padding: 0; box-sizing: border-box; }
 
         body {
             font-family: 'Apple SD Gothic Neo', 'Noto Sans KR', -apple-system, BlinkMacSystemFont, sans-serif;
             background: linear-gradient(135deg, #fdf6e3 0%, #f5f0e8 50%, #ede7db 100%);
             min-height: 100vh;
-            padding: 20px 16px 40px;
+            padding: 24px 16px 40px;
             color: #1a1a1a;
         }
 
-        /* ===== 상단 헤더 ===== */
-        .app-header {
-            background: linear-gradient(135deg, #2c2c2c, #3a3a3a);
-            border-radius: 16px;
-            padding: 18px 24px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
+        /* ===== 페이지 타이틀 ===== */
+        .page-title {
+            text-align: center;
+            max-width: 500px;
+            margin: 0 auto 6px;
+            font-size: 26px;
+            font-weight: 900;
+        }
+
+        .page-subtitle {
+            text-align: center;
             max-width: 500px;
             margin: 0 auto 24px;
-            box-shadow: 0 4px 16px rgba(0,0,0,0.15);
+            font-size: 14px;
+            color: #888;
         }
 
-        .app-header h1 {
-            color: #fff;
-            font-size: 18px;
-            font-weight: 700;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
-
-        .app-header .hamburger {
-            color: #fff;
-            font-size: 22px;
-            cursor: pointer;
-        }
-
-        .rate-badge {
+        .divider {
+            width: 60px;
+            height: 3px;
             background: linear-gradient(135deg, #FFB300, #FFC107);
-            color: #fff;
-            padding: 6px 14px;
-            border-radius: 20px;
-            font-size: 13px;
-            font-weight: 700;
-            display: flex;
-            align-items: center;
-            gap: 6px;
+            border-radius: 3px;
+            margin: 0 auto 28px;
         }
 
-        /* ===== 섹션 공통 ===== */
+        /* ===== 섹션 카드 ===== */
         .section {
             background: #ffffff;
             border-radius: 20px;
@@ -64,30 +48,11 @@
             max-width: 500px;
             margin: 0 auto 20px;
             box-shadow: 0 4px 20px rgba(0, 0, 0, 0.06);
-            animation: fadeInUp 0.5s ease-out both;
-        }
-
-        .section:nth-child(2) { animation-delay: 0.05s; }
-        .section:nth-child(3) { animation-delay: 0.1s; }
-        .section:nth-child(4) { animation-delay: 0.15s; }
-        .section:nth-child(5) { animation-delay: 0.2s; }
-        .section:nth-child(6) { animation-delay: 0.25s; }
-        .section:nth-child(7) { animation-delay: 0.3s; }
-
-        @keyframes fadeInUp {
-            from { opacity: 0; transform: translateY(20px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-
-        .section-icon {
-            font-size: 24px;
-            margin-right: 8px;
         }
 
         .section-title {
             font-size: 20px;
             font-weight: 800;
-            color: #1a1a1a;
             margin-bottom: 20px;
             display: flex;
             align-items: center;
@@ -96,6 +61,8 @@
             border-bottom: 2px solid #FFF3C4;
         }
 
+        .section-title .icon { font-size: 24px; }
+
         .section-title .badge {
             background: linear-gradient(135deg, #FFB300, #FFC107);
             color: #fff;
@@ -103,10 +70,11 @@
             font-weight: 700;
             padding: 3px 10px;
             border-radius: 20px;
+            margin-left: auto;
         }
 
-        /* ===== 기본 사용방법 스텝 ===== */
-        .steps { display: flex; flex-direction: column; gap: 16px; }
+        /* ===== 스텝 ===== */
+        .steps { display: flex; flex-direction: column; gap: 14px; }
 
         .step {
             display: flex;
@@ -117,7 +85,6 @@
             border-radius: 14px;
             border-left: 4px solid #FFC107;
             transition: transform 0.2s, box-shadow 0.2s;
-            cursor: default;
         }
 
         .step:hover {
@@ -140,10 +107,11 @@
             box-shadow: 0 2px 6px rgba(255, 193, 7, 0.35);
         }
 
+        .step-content { flex: 1; }
+
         .step-title {
             font-size: 15px;
             font-weight: 700;
-            color: #1a1a1a;
             margin-bottom: 4px;
         }
 
@@ -171,7 +139,29 @@
             border-radius: 20px;
         }
 
-        /* ===== 현재 환율 표시 영역 ===== */
+        /* ===== 팁 박스 ===== */
+        .tip-box {
+            background: linear-gradient(135deg, #FFF8E1, #FFF3C4);
+            border: 1px solid #FFE082;
+            border-radius: 14px;
+            padding: 16px 18px;
+            display: flex;
+            gap: 10px;
+            align-items: flex-start;
+            margin-top: 16px;
+        }
+
+        .tip-icon { font-size: 20px; flex-shrink: 0; margin-top: 1px; }
+
+        .tip-text {
+            font-size: 13px;
+            color: #5D4037;
+            line-height: 1.65;
+            word-break: keep-all;
+            font-weight: 500;
+        }
+
+        /* ===== 현재 환율 표시 ===== */
         .rate-display {
             text-align: center;
             padding: 20px 0;
@@ -181,10 +171,6 @@
             font-size: 13px;
             color: #888;
             margin-bottom: 4px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 6px;
         }
 
         .rate-display .rate-value {
@@ -217,10 +203,10 @@
             font-size: 13px;
             font-weight: 600;
             cursor: pointer;
-            transition: all 0.2s;
             display: flex;
             align-items: center;
             gap: 6px;
+            transition: all 0.2s;
         }
 
         .rate-btn.manual {
@@ -244,7 +230,42 @@
             margin-top: 8px;
         }
 
-        /* ===== 목표 매수환율 설정 ===== */
+        /* ===== 목표 입력 ===== */
+        .setting-group-title {
+            font-size: 15px;
+            font-weight: 700;
+            margin-bottom: 12px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            color: #333;
+        }
+
+        .flow-arrow {
+            font-size: 12px;
+            color: #aaa;
+            text-align: center;
+            margin-bottom: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 6px;
+        }
+
+        .flow-arrow span {
+            background: #f5f5f5;
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 11px;
+            color: #888;
+        }
+
+        .flow-connector {
+            color: #bbb;
+            font-size: 14px;
+            font-weight: 700;
+        }
+
         .target-input-area {
             background: #fafafa;
             border-radius: 14px;
@@ -254,11 +275,6 @@
             gap: 10px;
             margin-bottom: 12px;
             border: 2px solid #f0f0f0;
-            transition: border-color 0.2s;
-        }
-
-        .target-input-area:focus-within {
-            border-color: #FFC107;
         }
 
         .target-input {
@@ -270,10 +286,6 @@
             color: #1a1a1a;
             outline: none;
             text-align: center;
-        }
-
-        .target-input::placeholder {
-            color: #ccc;
         }
 
         .target-unit {
@@ -301,38 +313,16 @@
             justify-content: space-between;
             font-size: 13px;
             color: #777;
-            margin-bottom: 16px;
         }
 
-        .rate-info-row strong {
-            color: #1a1a1a;
-        }
+        .rate-info-row strong { color: #1a1a1a; }
 
         .diff-value {
             color: #E65100;
             font-weight: 600;
         }
 
-        .flow-arrow {
-            font-size: 12px;
-            color: #aaa;
-            text-align: center;
-            margin-bottom: 16px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 6px;
-        }
-
-        .flow-arrow span {
-            background: #f5f5f5;
-            padding: 4px 12px;
-            border-radius: 20px;
-            font-size: 11px;
-            color: #888;
-        }
-
-        /* ===== 자동 매수/매도 토글 ===== */
+        /* ===== 자동매수/매도 ===== */
         .auto-trade-header {
             display: flex;
             align-items: center;
@@ -353,17 +343,9 @@
             font-weight: 700;
             padding: 3px 10px;
             border-radius: 20px;
-        }
-
-        .status-badge.active {
             background: #FFF3C4;
             color: #F57F17;
             border: 1px solid #FFE082;
-        }
-
-        .status-badge.inactive {
-            background: #f0f0f0;
-            color: #999;
         }
 
         .auto-controls {
@@ -393,11 +375,6 @@
             background: linear-gradient(135deg, #FFB300, #FFC107);
             color: #fff;
             box-shadow: 0 3px 10px rgba(255, 193, 7, 0.35);
-        }
-
-        .control-btn.toggle-off {
-            background: #e0e0e0;
-            color: #999;
         }
 
         .control-btn:hover { transform: scale(1.05); }
@@ -441,15 +418,12 @@
             margin-top: 1px;
         }
 
-        .auto-desc-item .text {
-            flex: 1;
-        }
+        .auto-desc-item .text { flex: 1; }
 
         .auto-desc-item .title {
             font-weight: 700;
             font-size: 14px;
             margin-bottom: 4px;
-            color: #1a1a1a;
         }
 
         .auto-desc-item .desc {
@@ -479,10 +453,10 @@
             color: #fff;
         }
 
-        .flow-connector {
-            color: #bbb;
-            font-size: 14px;
-            font-weight: 700;
+        .setting-note {
+            margin-top: 10px;
+            font-size: 12px;
+            color: #aaa;
         }
 
         .last-trade-info {
@@ -492,7 +466,6 @@
             border-radius: 10px;
             display: flex;
             justify-content: space-between;
-            align-items: center;
             font-size: 12.5px;
             color: #888;
         }
@@ -503,91 +476,9 @@
             font-size: 14px;
         }
 
-        .setting-note {
-            margin-top: 10px;
-            font-size: 12px;
-            color: #aaa;
-            display: flex;
-            align-items: center;
-            gap: 4px;
-        }
+        /* ===== 옵션 카드 (연속매수 기준) ===== */
+        .setting-group { margin-bottom: 24px; }
 
-        /* ===== 자동매매 설정 모달 ===== */
-        .setting-modal-overlay {
-            display: none;
-            position: fixed;
-            top: 0; left: 0; right: 0; bottom: 0;
-            background: rgba(0,0,0,0.45);
-            z-index: 100;
-            justify-content: center;
-            align-items: flex-end;
-            padding: 20px;
-        }
-
-        .setting-modal-overlay.show {
-            display: flex;
-        }
-
-        .setting-modal {
-            background: #fff;
-            border-radius: 20px 20px 20px 20px;
-            width: 100%;
-            max-width: 500px;
-            max-height: 85vh;
-            overflow-y: auto;
-            padding: 28px 24px;
-            animation: slideUpModal 0.35s ease-out;
-        }
-
-        @keyframes slideUpModal {
-            from { opacity: 0; transform: translateY(60px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-
-        .setting-modal-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 24px;
-        }
-
-        .setting-modal-header h2 {
-            font-size: 19px;
-            font-weight: 800;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
-
-        .setting-modal-header .close {
-            width: 36px;
-            height: 36px;
-            border-radius: 50%;
-            background: #f2f2f2;
-            border: none;
-            font-size: 20px;
-            color: #888;
-            cursor: pointer;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-
-        .setting-group {
-            margin-bottom: 24px;
-        }
-
-        .setting-group-title {
-            font-size: 15px;
-            font-weight: 700;
-            margin-bottom: 12px;
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            color: #333;
-        }
-
-        /* 라디오 옵션 카드 */
         .option-card {
             padding: 16px;
             border-radius: 14px;
@@ -600,9 +491,7 @@
             align-items: flex-start;
         }
 
-        .option-card:hover {
-            border-color: #FFE082;
-        }
+        .option-card:hover { border-color: #FFE082; }
 
         .option-card.selected {
             border-color: #FFC107;
@@ -642,7 +531,6 @@
             font-size: 14px;
             font-weight: 700;
             margin-bottom: 4px;
-            color: #1a1a1a;
         }
 
         .option-content .info {
@@ -651,11 +539,7 @@
             line-height: 1.55;
         }
 
-        /* 갭차이 입력 */
-        .gap-input-area {
-            margin-top: 4px;
-        }
-
+        /* ===== 갭차이 입력 ===== */
         .gap-input-wrapper {
             display: flex;
             align-items: center;
@@ -665,12 +549,9 @@
             border-radius: 14px;
             padding: 12px 16px;
             margin-bottom: 12px;
-            transition: border-color 0.2s;
         }
 
-        .gap-input-wrapper:focus-within {
-            border-color: #FFC107;
-        }
+        .gap-input-wrapper:focus-within { border-color: #FFC107; }
 
         .gap-input {
             flex: 1;
@@ -710,9 +591,7 @@
             transition: all 0.2s;
         }
 
-        .gap-preset-btn:hover {
-            border-color: #FFE082;
-        }
+        .gap-preset-btn:hover { border-color: #FFE082; }
 
         .gap-preset-btn.active {
             border-color: #FFC107;
@@ -728,138 +607,57 @@
             line-height: 1.5;
         }
 
-        /* ===== 팁 박스 ===== */
-        .tip-box {
-            background: linear-gradient(135deg, #FFF8E1, #FFF3C4);
-            border: 1px solid #FFE082;
-            border-radius: 14px;
-            padding: 16px 18px;
-            display: flex;
-            gap: 10px;
-            align-items: flex-start;
-            margin-top: 16px;
-        }
+        /* ===== 전체 흐름 컬러 스텝 ===== */
+        .step.green  { border-left-color: #4CAF50; }
+        .step.blue   { border-left-color: #2196F3; }
+        .step.orange { border-left-color: #FF9800; }
+        .step.pink   { border-left-color: #E91E63; }
+        .step.purple { border-left-color: #9C27B0; }
 
-        .tip-icon { font-size: 20px; flex-shrink: 0; margin-top: 1px; }
-
-        .tip-text {
-            font-size: 13px;
-            color: #5D4037;
-            line-height: 1.65;
-            word-break: keep-all;
-            font-weight: 500;
-        }
-
-        /* ===== 하단 네비게이션 ===== */
-        .bottom-nav {
-            position: fixed;
-            bottom: 0;
-            left: 0;
-            right: 0;
-            background: #fff;
-            border-top: 1px solid #eee;
-            display: flex;
-            justify-content: space-around;
-            padding: 10px 0 20px;
-            max-width: 100%;
-            z-index: 50;
-        }
-
-        .nav-item {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: 4px;
-            cursor: pointer;
-            transition: color 0.2s;
-            color: #aaa;
-            text-decoration: none;
-            font-size: 11px;
-            font-weight: 600;
-        }
-
-        .nav-item .nav-icon { font-size: 22px; }
-
-        .nav-item.active { color: #7B1FA2; }
-
-        .nav-item:hover { color: #FFB300; }
+        .num-green  { background: linear-gradient(135deg, #388E3C, #4CAF50) !important; }
+        .num-blue   { background: linear-gradient(135deg, #1565C0, #2196F3) !important; }
+        .num-orange { background: linear-gradient(135deg, #E65100, #FF9800) !important; }
+        .num-pink   { background: linear-gradient(135deg, #AD1457, #E91E63) !important; }
+        .num-purple { background: linear-gradient(135deg, #6A1B9A, #9C27B0) !important; }
 
         /* ===== 반응형 ===== */
         @media (max-width: 460px) {
             .section { padding: 22px 18px; border-radius: 16px; }
             .rate-display .rate-value { font-size: 42px; }
             .target-input { font-size: 24px; }
-        }
-
-        /* 하단 여백 (네비게이션 높이만큼) */
-        .bottom-spacer { height: 80px; }
-
-        /* ===== 구분선 ===== */
-        .divider {
-            width: 60px;
-            height: 3px;
-            background: linear-gradient(135deg, #FFB300, #FFC107);
-            border-radius: 3px;
-            margin: 0 auto 20px;
-        }
-
-        /* ===== 큰 제목 ===== */
-        .page-title {
-            text-align: center;
-            max-width: 500px;
-            margin: 0 auto 8px;
-            font-size: 26px;
-            font-weight: 900;
-            color: #1a1a1a;
-        }
-
-        .page-subtitle {
-            text-align: center;
-            max-width: 500px;
-            margin: 0 auto 24px;
-            font-size: 14px;
-            color: #888;
+            .gap-input { font-size: 22px; }
         }
     </style>
 </head>
 <body>
 
-    <!-- ===== 앱 헤더 ===== -->
-    <div class="app-header">
-        <h1>
-            <span class="hamburger">☰</span>
-            절대강자 분할환전
-        </h1>
-        <div class="rate-badge">🇺🇸 1508.1원</div>
-    </div>
-
-    <div class="page-title">📖 전체 사용방법</div>
+    <!-- 페이지 타이틀 -->
+    <div class="page-title">📖 전체 이용방법</div>
     <div class="page-subtitle">시뮬레이션 환전앱의 모든 기능을 알아보세요</div>
     <div class="divider"></div>
 
-    <!-- ============================================ -->
-    <!-- PART 1: 기본 사용방법 5단계                    -->
-    <!-- ============================================ -->
+    <!-- ========================================== -->
+    <!-- PART 1: 기본 사용방법 5단계                  -->
+    <!-- ========================================== -->
     <div class="section">
         <div class="section-title">
-            <span class="section-icon">📋</span>
+            <span class="icon">📋</span>
             기본 사용방법
             <span class="badge">5단계</span>
         </div>
 
         <div class="steps">
-            <!-- Step 1 -->
             <div class="step">
                 <div class="step-number">1</div>
-                <div style="flex:1">
+                <div class="step-content">
                     <div class="step-title">초기 예산 설정</div>
                     <div class="step-desc">홈 화면에서 총 투자 예산을 설정합니다. 예산은 언제든 수정할 수 있습니다.</div>
                 </div>
             </div>
-            <!-- Step 2 -->
+
             <div class="step">
                 <div class="step-number">2</div>
-                <div style="flex:1">
+                <div class="step-content">
                     <div class="step-title">통화 선택</div>
                     <div class="step-desc">원하는 통화를 선택합니다.</div>
                     <div class="currency-tags">
@@ -870,26 +668,26 @@
                     </div>
                 </div>
             </div>
-            <!-- Step 3 -->
+
             <div class="step">
                 <div class="step-number">3</div>
-                <div style="flex:1">
+                <div class="step-content">
                     <div class="step-title">분할 매수</div>
                     <div class="step-desc">환율이 유리할 때 분할하여 외화를 매수합니다. 한 번에 모든 예산을 투입하지 않고 나누어 환전하세요.</div>
                 </div>
             </div>
-            <!-- Step 4 -->
+
             <div class="step">
                 <div class="step-number">4</div>
-                <div style="flex:1">
+                <div class="step-content">
                     <div class="step-title">환전 (매도)</div>
                     <div class="step-desc">목표 환율에 도달하면 매도하여 수익을 실현합니다. 자동 매도 기능도 활용하세요.</div>
                 </div>
             </div>
-            <!-- Step 5 -->
+
             <div class="step">
                 <div class="step-number">5</div>
-                <div style="flex:1">
+                <div class="step-content">
                     <div class="step-title">통계 확인</div>
                     <div class="step-desc">투자 통계에서 전체 수익률, 거래 내역 등을 확인합니다.</div>
                 </div>
@@ -902,16 +700,15 @@
         </div>
     </div>
 
-    <!-- ============================================ -->
-    <!-- PART 2: 현재 환율 & 목표 매수환율 설정          -->
-    <!-- ============================================ -->
+    <!-- ========================================== -->
+    <!-- PART 2: 현재 환율 & 목표 매수환율 설정        -->
+    <!-- ========================================== -->
     <div class="section">
         <div class="section-title">
-            <span class="section-icon">📡</span>
-            현재 환율 & 목표 설정
+            <span class="icon">📡</span>
+            현재 환율 &amp; 목표 설정
         </div>
 
-        <!-- 현재 환율 -->
         <div class="rate-display">
             <div class="label">📈 현재 환율 &nbsp;|&nbsp; 오후 01:43</div>
             <div class="rate-value">1508.1</div>
@@ -926,7 +723,6 @@
 
         <div style="height: 24px;"></div>
 
-        <!-- 목표 매수환율 -->
         <div class="setting-group-title">🎯 목표 매수환율 설정</div>
 
         <div class="flow-arrow">
@@ -947,31 +743,28 @@
         </div>
     </div>
 
-    <!-- ============================================ -->
-    <!-- PART 3: 자동 매수/매도 시뮬레이션               -->
-    <!-- ============================================ -->
+    <!-- ========================================== -->
+    <!-- PART 3: 자동 매수/매도 시뮬레이션             -->
+    <!-- ========================================== -->
     <div class="section">
         <div class="section-title">
-            <span class="section-icon">⚡</span>
+            <span class="icon">⚡</span>
             자동 매수/매도 시뮬레이션
             <span class="badge">핵심 기능</span>
         </div>
 
-        <!-- 토글 헤더 -->
         <div class="auto-trade-header">
             <div class="auto-trade-title">
                 ⚡ 자동 매수/매도
-                <span class="status-badge active">작동중</span>
+                <span class="status-badge">작동중</span>
             </div>
             <div class="auto-controls">
-                <button class="control-btn settings" onclick="openSettingModal()" title="설정">⚙️</button>
+                <button class="control-btn settings" title="설정">⚙️</button>
                 <button class="control-btn toggle-on" id="toggleBtn" onclick="toggleAuto()" title="ON/OFF">⚡</button>
             </div>
         </div>
 
-        <!-- 자동매매 3가지 설명 -->
         <div class="auto-desc-list">
-
             <!-- 자동매수 -->
             <div class="auto-desc-item buy">
                 <span class="icon">⚡</span>
@@ -1019,23 +812,22 @@
                     </div>
                 </div>
             </div>
-
         </div>
 
         <div class="setting-note">※ ⚙️ 설정에서 기준/갭차이 변경 가능</div>
 
         <div class="last-trade-info">
-            <span>미지막 자동매수가</span>
+            <span>마지막 자동매수가</span>
             <span class="value">1504.3원</span>
         </div>
     </div>
 
-    <!-- ============================================ -->
-    <!-- PART 4: 연속매수 기준 설정 상세                 -->
-    <!-- ============================================ -->
+    <!-- ========================================== -->
+    <!-- PART 4: 자동매매 설정 상세                    -->
+    <!-- ========================================== -->
     <div class="section">
         <div class="section-title">
-            <span class="section-icon">⚙️</span>
+            <span class="icon">⚙️</span>
             자동매매 설정 상세 - USD
         </div>
 
@@ -1043,7 +835,7 @@
         <div class="setting-group">
             <div class="setting-group-title">📊 연속매수 기준</div>
 
-            <div class="option-card selected" onclick="selectOption(this, 'criteria')">
+            <div class="option-card selected" onclick="selectOption(this)">
                 <div class="option-radio"></div>
                 <div class="option-content">
                     <div class="name">목표매수환율 기준</div>
@@ -1051,7 +843,7 @@
                 </div>
             </div>
 
-            <div class="option-card" onclick="selectOption(this, 'criteria')">
+            <div class="option-card" onclick="selectOption(this)">
                 <div class="option-radio"></div>
                 <div class="option-content">
                     <div class="name">이전 자동매수환율 기준</div>
@@ -1059,7 +851,7 @@
                 </div>
             </div>
 
-            <div class="option-card" onclick="selectOption(this, 'criteria')">
+            <div class="option-card" onclick="selectOption(this)">
                 <div class="option-radio"></div>
                 <div class="option-content">
                     <div class="name">현재환율 기준</div>
@@ -1072,23 +864,21 @@
         <div class="setting-group">
             <div class="setting-group-title">🔻 연속매수 갭차이</div>
 
-            <div class="gap-input-area">
-                <div class="gap-input-wrapper">
-                    <input type="number" class="gap-input" id="gapInput" value="2">
-                    <span class="gap-unit">원</span>
-                </div>
+            <div class="gap-input-wrapper">
+                <input type="number" class="gap-input" id="gapInput" value="2">
+                <span class="gap-unit">원</span>
+            </div>
 
-                <div class="gap-presets">
-                    <button class="gap-preset-btn" onclick="setGap(1, this)">1원</button>
-                    <button class="gap-preset-btn active" onclick="setGap(2, this)">2원</button>
-                    <button class="gap-preset-btn" onclick="setGap(3, this)">3원</button>
-                    <button class="gap-preset-btn" onclick="setGap(5, this)">5원</button>
-                    <button class="gap-preset-btn" onclick="setGap(10, this)">10원</button>
-                </div>
+            <div class="gap-presets" id="gapPresets">
+                <button class="gap-preset-btn" onclick="setGap(1, this)">1원</button>
+                <button class="gap-preset-btn active" onclick="setGap(2, this)">2원</button>
+                <button class="gap-preset-btn" onclick="setGap(3, this)">3원</button>
+                <button class="gap-preset-btn" onclick="setGap(5, this)">5원</button>
+                <button class="gap-preset-btn" onclick="setGap(10, this)">10원</button>
+            </div>
 
-                <div class="gap-desc">
-                    기준 환율에서 <strong>2원 이상 하락</strong>하면 자동으로 추가 매수합니다
-                </div>
+            <div class="gap-desc" id="gapDesc">
+                기준 환율에서 <strong>2원 이상 하락</strong>하면 자동으로 추가 매수합니다
             </div>
         </div>
 
@@ -1104,136 +894,53 @@
         </div>
     </div>
 
-    <!-- ============================================ -->
-    <!-- PART 5: 전체 흐름 요약                        -->
-    <!-- ============================================ -->
+    <!-- ========================================== -->
+    <!-- PART 5: 전체 시뮬레이션 흐름                  -->
+    <!-- ========================================== -->
     <div class="section">
         <div class="section-title">
-            <span class="section-icon">🗺️</span>
+            <span class="icon">🗺️</span>
             전체 시뮬레이션 흐름
         </div>
 
         <div class="steps">
-            <div class="step" style="border-left-color: #4CAF50;">
-                <div class="step-number" style="background: linear-gradient(135deg, #388E3C, #4CAF50);">①</div>
-                <div style="flex:1">
+            <div class="step green">
+                <div class="step-number num-green">①</div>
+                <div class="step-content">
                     <div class="step-title">예산 & 통화 설정</div>
                     <div class="step-desc">투자 예산을 입력하고 원하는 통화(USD, JPY 등)를 선택합니다.</div>
                 </div>
             </div>
 
-            <div class="step" style="border-left-color: #2196F3;">
-                <div class="step-number" style="background: linear-gradient(135deg, #1565C0, #2196F3);">②</div>
-                <div style="flex:1">
+            <div class="step blue">
+                <div class="step-number num-blue">②</div>
+                <div class="step-content">
                     <div class="step-title">목표환율 & 자동매매 설정</div>
                     <div class="step-desc">목표 매수/매도 환율을 설정하고, 연속매수 기준과 갭차이를 조정합니다.</div>
                 </div>
             </div>
 
-            <div class="step" style="border-left-color: #FF9800;">
-                <div class="step-number" style="background: linear-gradient(135deg, #E65100, #FF9800);">③</div>
-                <div style="flex:1">
+            <div class="step orange">
+                <div class="step-number num-orange">③</div>
+                <div class="step-content">
                     <div class="step-title">자동 분할매수 실행</div>
                     <div class="step-desc">실시간 환율이 목표에 도달하면 자동 매수! 갭차이만큼 추가 하락 시 연속 매수가 이어집니다.</div>
                 </div>
             </div>
 
-            <div class="step" style="border-left-color: #E91E63;">
-                <div class="step-number" style="background: linear-gradient(135deg, #AD1457, #E91E63);">④</div>
-                <div style="flex:1">
+            <div class="step pink">
+                <div class="step-number num-pink">④</div>
+                <div class="step-content">
                     <div class="step-title">자동매도 & 수익 실현</div>
                     <div class="step-desc">환율이 목표매도가 이상 상승하면 자동 매도로 수익을 실현합니다.</div>
                 </div>
             </div>
 
-            <div class="step" style="border-left-color: #9C27B0;">
-                <div class="step-number" style="background: linear-gradient(135deg, #6A1B9A, #9C27B0);">⑤</div>
-                <div style="flex:1">
+            <div class="step purple">
+                <div class="step-number num-purple">⑤</div>
+                <div class="step-content">
                     <div class="step-title">통계 분석 & 전략 개선</div>
                     <div class="step-desc">수익률, 거래 내역, 평균 매수가를 분석하고 다음 전략에 반영합니다.</div>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- 하단 여백 -->
-    <div class="bottom-spacer"></div>
-
-    <!-- ===== 하단 네비게이션 ===== -->
-    <nav class="bottom-nav">
-        <a class="nav-item" href="#">
-            <span class="nav-icon">🏠</span>
-            <span>홈</span>
-        </a>
-        <a class="nav-item" href="#">
-            <span class="nav-icon">📈</span>
-            <span>환율</span>
-        </a>
-        <a class="nav-item active" href="#">
-            <span class="nav-icon">💱</span>
-            <span>환전</span>
-        </a>
-        <a class="nav-item" href="#">
-            <span class="nav-icon">📊</span>
-            <span>통계</span>
-        </a>
-        <a class="nav-item" href="#">
-            <span class="nav-icon">🧮</span>
-            <span>계산</span>
-        </a>
-    </nav>
-
-    <!-- ===== 자동매매 설정 모달 (팝업) ===== -->
-    <div class="setting-modal-overlay" id="settingOverlay">
-        <div class="setting-modal">
-            <div class="setting-modal-header">
-                <h2>🇺🇸 자동매매 설정 - USD</h2>
-                <button class="close" onclick="closeSettingModal()">&times;</button>
-            </div>
-
-            <div class="setting-group">
-                <div class="setting-group-title">📊 연속매수 기준</div>
-
-                <div class="option-card selected" onclick="selectOption(this, 'modal-criteria')">
-                    <div class="option-radio"></div>
-                    <div class="option-content">
-                        <div class="name">목표매수환율 기준</div>
-                        <div class="info">매수 후 목표매수환율에서 갭차이만큼 자동 하향 입력 (현재: 1505.0원)</div>
-                    </div>
-                </div>
-
-                <div class="option-card" onclick="selectOption(this, 'modal-criteria')">
-                    <div class="option-radio"></div>
-                    <div class="option-content">
-                        <div class="name">이전 자동매수환율 기준</div>
-                        <div class="info">이전 자동매수가에서 갭차이만큼 하락 시 재매수 (마지막: 1504.3원)</div>
-                    </div>
-                </div>
-
-                <div class="option-card" onclick="selectOption(this, 'modal-criteria')">
-                    <div class="option-radio"></div>
-                    <div class="option-content">
-                        <div class="name">현재환율 기준</div>
-                        <div class="info">매수 시점 환율에서 갭차이만큼 하락 시 재매수 (현재: 1508.1원)</div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="setting-group">
-                <div class="setting-group-title">🔻 연속매수 갭차이</div>
-                <div class="gap-input-area">
-                    <div class="gap-input-wrapper">
-                        <input type="number" class="gap-input" value="2">
-                        <span class="gap-unit">원</span>
-                    </div>
-                    <div class="gap-presets">
-                        <button class="gap-preset-btn" onclick="setGap(1, this)">1원</button>
-                        <button class="gap-preset-btn active" onclick="setGap(2, this)">2원</button>
-                        <button class="gap-preset-btn" onclick="setGap(3, this)">3원</button>
-                        <button class="gap-preset-btn" onclick="setGap(5, this)">5원</button>
-                        <button class="gap-preset-btn" onclick="setGap(10, this)">10원</button>
-                    </div>
-                    <div class="gap-desc">기준 환율에서 2원 이상 하락하면 자동으로 추가 매수합니다</div>
                 </div>
             </div>
         </div>
@@ -1242,65 +949,47 @@
     <!-- ===== JavaScript ===== -->
     <script>
         // 옵션 카드 선택
-        function selectOption(card, group) {
+        function selectOption(card) {
             const parent = card.parentElement;
             parent.querySelectorAll('.option-card').forEach(c => c.classList.remove('selected'));
             card.classList.add('selected');
         }
 
-        // 갭차이 프리셋 선택
+        // 갭차이 프리셋
         function setGap(value, btn) {
-            const area = btn.closest('.gap-input-area') || btn.closest('.setting-group');
-            const input = area.querySelector('.gap-input');
-            if (input) input.value = value;
-
-            const presets = btn.parentElement;
-            presets.querySelectorAll('.gap-preset-btn').forEach(b => b.classList.remove('active'));
+            document.getElementById('gapInput').value = value;
+            document.querySelectorAll('#gapPresets .gap-preset-btn').forEach(b => b.classList.remove('active'));
             btn.classList.add('active');
-
-            // 설명 업데이트
-            const desc = area.querySelector('.gap-desc');
-            if (desc) {
-                desc.innerHTML = `기준 환율에서 <strong>${value}원 이상 하락</strong>하면 자동으로 추가 매수합니다`;
-            }
+            document.getElementById('gapDesc').innerHTML =
+                `기준 환율에서 <strong>${value}원 이상 하락</strong>하면 자동으로 추가 매수합니다`;
         }
 
         // 자동매매 토글
         function toggleAuto() {
             const btn = document.getElementById('toggleBtn');
             const badge = document.querySelector('.status-badge');
-
             if (btn.classList.contains('toggle-on')) {
                 btn.classList.remove('toggle-on');
-                btn.classList.add('toggle-off');
-                badge.classList.remove('active');
-                badge.classList.add('inactive');
+                btn.style.background = '#e0e0e0';
+                btn.style.color = '#999';
+                btn.style.boxShadow = 'none';
+                badge.style.background = '#f0f0f0';
+                badge.style.color = '#999';
+                badge.style.borderColor = '#ddd';
                 badge.textContent = '중지';
             } else {
-                btn.classList.remove('toggle-off');
                 btn.classList.add('toggle-on');
-                badge.classList.remove('inactive');
-                badge.classList.add('active');
+                btn.style.background = '';
+                btn.style.color = '';
+                btn.style.boxShadow = '';
+                badge.style.background = '';
+                badge.style.color = '';
+                badge.style.borderColor = '';
                 badge.textContent = '작동중';
             }
         }
 
-        // 설정 모달
-        function openSettingModal() {
-            document.getElementById('settingOverlay').classList.add('show');
-            document.body.style.overflow = 'hidden';
-        }
-
-        function closeSettingModal() {
-            document.getElementById('settingOverlay').classList.remove('show');
-            document.body.style.overflow = '';
-        }
-
-        document.getElementById('settingOverlay').addEventListener('click', function(e) {
-            if (e.target === this) closeSettingModal();
-        });
-
-        // 스텝 순차 등장 애니메이션
+        // 스크롤 등장 애니메이션
         const observer = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
@@ -1310,10 +999,10 @@
             });
         }, { threshold: 0.1 });
 
-        document.querySelectorAll('.step, .auto-desc-item').forEach((el, i) => {
+        document.querySelectorAll('.section').forEach((el, i) => {
             el.style.opacity = '0';
-            el.style.transform = 'translateY(15px)';
-            el.style.transition = `opacity 0.4s ease ${i * 0.06}s, transform 0.4s ease ${i * 0.06}s`;
+            el.style.transform = 'translateY(20px)';
+            el.style.transition = `opacity 0.5s ease ${i * 0.08}s, transform 0.5s ease ${i * 0.08}s`;
             observer.observe(el);
         });
     </script>
